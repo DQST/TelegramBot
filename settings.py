@@ -6,7 +6,9 @@ BASE_URL = f'https://api.telegram.org/bot{TOKEN}/'
 HEADERS = {
     'Content-Type': 'application/json',
 }
-SITES_FOR_CHECK = ['https://chainartsoft.com']
+SITES_FOR_CHECK = {
+    'https://chainartsoft.com',
+}
 
 HOST = '0.0.0.0'
 PORT = 6060

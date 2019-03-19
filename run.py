@@ -8,6 +8,8 @@ from aiohttp import web
 
 from settings import BASE_URL, HEADERS, TOKEN, SITES_FOR_CHECK, HOST, PORT, LOGGING
 
+DELAY = 3600
+
 logger = logging.getLogger(__name__)
 
 
@@ -45,7 +47,7 @@ async def monitoring(app: web.Application):
                     await send_request(session, method='sendMessage', json_data=json_data)
                 else:
                     logger.info(f'Site {url} available.')
-                await asyncio.sleep(15)
+                await asyncio.sleep(DELAY)
 
 
 async def handle(request):

@@ -10,7 +10,7 @@ SITES_FOR_CHECK = {
     'https://chainartsoft.com',
 }
 
-HOST = '0.0.0.0'
+HOST = '127.0.0.1'
 PORT = 6060
 
 info_log = os.path.join(os.getcwd(), 'info.log')

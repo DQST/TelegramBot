@@ -32,7 +32,7 @@ async def monitoring(app: web.Application):
     async with aiohttp.ClientSession(headers=HEADERS,
                                      connector=tcp_connector) as session:
         await send_request(session, 'deleteWebhook', {})
-        await send_request(session, 'setWebhook', {'url': 'bot.erc20crawler.com'})
+        await send_request(session, 'setWebhook', {'url': f'https://bot.erc20crawler.com/{TOKEN}/'})
         while True:
             tasks = [
                 app.loop.create_task(is_site_available(session, url))

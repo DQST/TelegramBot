@@ -63,7 +63,7 @@ def command(name=None):
 
 @command()
 def help():
-    return COMMANDS.keys()
+    return list(COMMANDS.keys())
 
 
 @command('addsite')
@@ -74,7 +74,7 @@ def add_site(url):
 
 @command()
 def sites():
-    return SITES_FOR_CHECK
+    return list(SITES_FOR_CHECK)
 
 
 @command('remsite')

@@ -61,7 +61,7 @@ def command(name=None):
     return _fun
 
 
-@command
+@command()
 def help():
     return COMMANDS.keys()
 
@@ -72,7 +72,7 @@ def add_site(url):
     return sites()
 
 
-@command
+@command()
 def sites():
     return SITES_FOR_CHECK
 

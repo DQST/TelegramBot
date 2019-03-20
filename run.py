@@ -68,17 +68,17 @@ class Bot(web.Application):
         if request.match_info.get('token') == TOKEN:
             data = await request.json()
             logging.info(data)
-            entities = data.get('entities')
-            if entities and entities.get('type') == 'bot_command':
-                text = data['text']
+            data = data['message']
+            text = data['text']
+            if text.startswith('/'):
                 command, *args = text[1:].split(' ')
                 chat_id = data['chat']['id']
-                fun = COMMANDS.get(command)
-                if fun:
-                    res = fun(*args)
+                if command in COMMANDS:
+                    res = COMMANDS[command](*args)
                     await self.send_message(chat_id=chat_id, message=res)
+                else:
+                    await self.send_message(chat_id=chat_id, message='Unknown command')
 
-                await self.send_message(chat_id=chat_id, message='Unknown command')
         return web.json_response(data={'status': 'ok'})
 
     async def startup(self):

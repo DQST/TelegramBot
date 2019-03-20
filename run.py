@@ -67,6 +67,7 @@ class Bot(web.Application):
     async def handle(self, request):
         if request.match_info.get('token') == TOKEN:
             data = await request.json()
+            logging.info(data)
             entities = data.get('entities')
             if entities and entities.get('type') == 'bot_command':
                 text = data['text']
